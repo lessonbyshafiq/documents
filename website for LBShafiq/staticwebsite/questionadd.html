@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>প্রশ্ন যুক্ত করুন | JobQBank</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Hind_Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>body { font-family: 'Hind Siliguri', sans-serif; }</style>
+</head>
+<body class="bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950 min-h-screen p-6 text-slate-200">
+
+    <div class="max-w-3xl mx-auto bg-white/[0.02] border border-white/10 backdrop-blur-xl rounded-3xl p-8 shadow-2xl">
+        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+            <i class="fa-solid fa-circle-plus text-blue-500"></i> নতুন প্রশ্ন যোগ করুন
+        </h2>
+
+        <form method="POST" action="">
+            <!-- টপিক ও বেসিক ফিল্ডস -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 mb-2">প্রশ্নের ধরণ (Type)</label>
+                    <select id="question_type" name="question_type" class="w-full bg-slate-900/50 border border-white/10 rounded-xl py-3 px-4 text-sm text-white focus:outline-none focus:border-blue-500" onchange="toggleAnswerFields()">
+                        <option value="MCQ">বহুনির্বাচনী (MCQ)</option>
+                        <option value="True/False">সত্য / মিথ্যা (True/False)</option>
+                        <option value="Broad">বর্ণনামূলক (Broad/Short)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 mb-2">কঠিনতার স্তর (Difficulty)</label>
+                    <select name="difficulty_level" class="w-full bg-slate-900/50 border border-white/10 rounded-xl py-3 px-4 text-sm text-white focus:outline-none focus:border-blue-500">
+                        <option value="Easy">সহজ (Easy)</option>
+                        <option value="Medium" selected>মধ্যম (Medium)</option>
+                        <option value="Hard">কঠিন (Hard)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- মূল প্রশ্ন -->
+            <div class="mb-6">
+                <label class="block text-xs font-semibold text-slate-400 mb-2">প্রশ্নটি লিখুন</label>
+                <textarea name="question_text" rows="3" placeholder="এখানে আপনার প্রশ্নটি টাইপ করুন..." class="w-full bg-slate-900/50 border border-white/10 rounded-xl py-3 px-4 text-sm text-white focus:outline-none focus:border-blue-500" required></textarea>
+            </div>
+
+            <!-- ---------------- ডাইনামিক সেকশন সমূহ ---------------- -->
+
+            <!-- ক. MCQ অপশন ফিল্ডস (ডিফল্ট দেখাবে) -->
+            <div id="mcq_section" class="space-y-4 border-t border-white/5 pt-4">
+                <h3 class="text-sm font-bold text-emerald-400 mb-2"><i class="fa-solid fa-list-ul"></i> অপশনসমূহ এবং সঠিক উত্তরটি টিক দিন:</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- অপশন ১ -->
+                    <div class="flex items-center gap-3 bg-white/[0.01] border border-white/5 p-3 rounded-xl">
+                        <input type="radio" name="correct_mcq_option" value="0" checked class="w-4 h-4 text-blue-600">
+                        <input type="text" name="mcq_options" placeholder="অপশন ক" class="flex-1 bg-transparent border-b border-white/10 focus:outline-none focus:border-blue-500 text-sm py-1">
+                    </div>
+                    <!-- অপশন ২ -->
+                    <div class="flex items-center gap-3 bg-white/[0.01] border border-white/5 p-3 rounded-xl">
+                        <input type="radio" name="correct_mcq_option" value="1" class="w-4 h-4 text-blue-600">
+                        <input type="text" name="mcq_options" placeholder="অপশন খ" class="flex-1 bg-transparent border-b border-white/10 focus:outline-none focus:border-blue-500 text-sm py-1">
+                    </div>
+                    <!-- অপশন ৩ -->
+                    <div class="flex items-center gap-3 bg-white/[0.01] border border-white/5 p-3 rounded-xl">
+                        <input type="radio" name="correct_mcq_option" value="2" class="w-4 h-4 text-blue-600">
+                        <input type="text" name="mcq_options" placeholder="অপশন গ" class="flex-1 bg-transparent border-b border-white/10 focus:outline-none focus:border-blue-500 text-sm py-1">
+                    </div>
+                    <!-- অপশন ৪ -->
+                    <div class="flex items-center gap-3 bg-white/[0.01] border border-white/5 p-3 rounded-xl">
+                        <input type="radio" name="correct_mcq_option" value="3" class="w-4 h-4 text-blue-600">
+                        <input type="text" name="mcq_options" placeholder="অপশন ঘ" class="flex-1 bg-transparent border-b border-white/10 focus:outline-none focus:border-blue-500 text-sm py-1">
+                    </div>
+                </div>
+            </div>
+
+            <!-- খ. True/False ফিল্ডস (লুকানো) -->
+            <div id="tf_section" class="hidden space-y-4 border-t border-white/5 pt-4">
+                <h3 class="text-sm font-bold text-amber-400 mb-2"><i class="fa-solid fa-circle-check"></i> সঠিক উত্তর নির্বাচন করুন:</h3>
+                <div class="flex gap-6">
+                    <label class="flex items-center gap-2 bg-slate-900/40 px-5 py-3 rounded-xl border border-white/10 cursor-pointer">
+                        <input type="radio" name="tf_answer" value="True" checked class="w-4 h-4"> <span class="text-sm font-semibold">সত্য (True)</span>
+                    </label>
+                    <label class="flex items-center gap-2 bg-slate-900/40 px-5 py-3 rounded-xl border border-white/10 cursor-pointer">
+                        <input type="radio" name="tf_answer" value="False" class="w-4 h-4"> <span class="text-sm font-semibold">মিথ্যা (False)</span>
+                    </label>
+                </div>
+                <div class="mt-3">
+                    <label class="block text-xs font-semibold text-slate-400 mb-1.5">ব্যাখ্যা (ঐচ্ছিক)</label>
+                    <input type="text" name="tf_explanation" placeholder="কেন সত্য বা মিথ্যা হলো তার সংক্ষিপ্ত ব্যাখ্যা..." class="w-full bg-slate-900/50 border border-white/10 rounded-xl py-2.5 px-4 text-xs text-white focus:outline-none focus:border-blue-500">
+                </div>
+            </div>
+
+            <!-- গ. Broad/Descriptive ফিল্ডস (লুকানো) -->
+            <div id="broad_section" class="hidden space-y-4 border-t border-white/5 pt-4">
+                <h3 class="text-sm font-bold text-purple-400 mb-2"><i class="fa-solid fa-file-pen"></i> বর্ণনামূলক উত্তর গাইড:</h3>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 mb-2">আদর্শ উত্তর (Model Answer)</label>
+                    <textarea name="model_answer" rows="4" placeholder="শিক্ষার্থীদের দেখানোর জন্য আদর্শ উত্তরটি লিখুন..." class="w-full bg-slate-900/50 border border-white/10 rounded-xl py-3 px-4 text-sm text-white focus:outline-none focus:border-blue-500"></textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 mb-2">প্রয়োজনীয় কিওয়ার্ডসমূহ (Keywords)</label>
+                    <input type="text" name="keywords_required" placeholder="যেমন: ডাটাবেজ, ইনডেক্স, রিলেশন (কমা দিয়ে আলাদা করুন)" class="w-full bg-slate-900/50 border border-white/10 rounded-xl py-3 px-4 text-sm text-white focus:outline-none focus:border-blue-500">
+                </div>
+            </div>
+
+            <!-- সাবমিট বাটন -->
+            <div class="mt-8 pt-4 border-t border-white/5">
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 rounded-xl text-sm transition-colors shadow-lg shadow-blue-600/20">
+                    প্রশ্নটি ডাটাবেজে সংরক্ষণ করুন
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- 🌐 ড্রপডাউন পরিবর্তনের জাভাস্ক্রিপ্ট ম্যাজিক -->
+    <script>
+        function toggleAnswerFields() {
+            const qType = document.getElementById('question_type').value;
+            
+            // সব সেকশন প্রথমে হাইড করি
+            document.getElementById('mcq_section').classList.add('hidden');
+            document.getElementById('tf_section').classList.add('hidden');
+            document.getElementById('broad_section').classList.add('hidden');
+            
+            // সিলেক্টেড টাইপ অনুযায়ী আন-হাইড (শো) করি
+            if (qType === 'MCQ') {
+                document.getElementById('mcq_section').classList.remove('hidden');
+            } else if (qType === 'True/False') {
+                document.getElementById('tf_section').classList.remove('hidden');
+            } else if (qType === 'Broad' || qType === 'Short') {
+                document.getElementById('broad_section').classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>

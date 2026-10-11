@@ -1,0 +1,114 @@
+-- 1. Subjects টেবিল
+CREATE TABLE subjects (
+    subject_id INT PRIMARY KEY AUTO_INCREMENT,
+    subject_name VARCHAR(100) NOT NULL,
+    subject_code VARCHAR(20) UNIQUE,
+    credits INT DEFAULT 3,
+    department VARCHAR(50),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 2. Chapters টেবিল - One to Many with Subjects
+CREATE TABLE chapters (
+    chapter_id INT PRIMARY KEY AUTO_INCREMENT,
+    subject_id INT NOT NULL,
+    chapter_name VARCHAR(150) NOT NULL,
+    chapter_no INT,
+    chapter_description TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    FOREIGN KEY (subject_id) REFERENCES subjects(subject_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+-- 3. Topics টেবিল - One to Many with Chapters
+CREATE TABLE topics (
+    topic_id INT PRIMARY KEY AUTO_INCREMENT,
+    chapter_id INT NOT NULL,
+    topic_name VARCHAR(200) NOT NULL,
+    topic_no INT,
+    topic_description TEXT,
+    estimated_time_minutes INT DEFAULT 30,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    FOREIGN KEY (chapter_id) REFERENCES chapters(chapter_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+-- 4. Questions টেবিল - One to Many with Topics
+CREATE TABLE questions (
+    question_id INT PRIMARY KEY AUTO_INCREMENT,
+    topic_id INT NOT NULL,
+    question_text TEXT NOT NULL,
+    question_type ENUM('MCQ', 'Short', 'Broad', 'True/False') DEFAULT 'MCQ',
+    difficulty_level ENUM('Easy', 'Medium', 'Hard') DEFAULT 'Medium',
+    marks INT DEFAULT 1,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    FOREIGN KEY (topic_id) REFERENCES topics(topic_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+-- 5. Tags টেবিল
+CREATE TABLE tags (
+    tag_id INT PRIMARY KEY AUTO_INCREMENT,
+    tag_name VARCHAR(50) NOT NULL UNIQUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 6. Question_Tags Junction টেবিল - Many to Many with Questions
+CREATE TABLE question_tags (
+    question_id INT NOT NULL,
+    tag_id INT NOT NULL,
+    
+    PRIMARY KEY (question_id, tag_id),
+    
+    FOREIGN KEY (question_id) REFERENCES questions(question_id)
+        ON DELETE CASCADE,
+    FOREIGN KEY (tag_id) REFERENCES tags(tag_id)
+        ON DELETE CASCADE
+);
+
+--7. MCQ Options Table 
+CREATE TABLE mcq_options (
+    option_id INT PRIMARY KEY AUTO_INCREMENT,
+    question_id INT NOT NULL,
+    option_text TEXT NOT NULL,
+    is_correct BOOLEAN DEFAULT FALSE, -- এটি সঠিক উত্তর কিনা (True/False)
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    FOREIGN KEY (question_id) REFERENCES questions(question_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+
+--8. True False Table Anser
+CREATE TABLE true_false_answers (
+    tf_id INT PRIMARY KEY AUTO_INCREMENT,
+    question_id INT NOT NULL UNIQUE, -- UNIQUE করা হয়েছে কারণ একটি প্রশ্নের উত্তর একটাই হবে
+    correct_answer BOOLEAN NOT NULL, -- 1 ফর True, 0 ফর False
+    explanation TEXT, -- কেন সত্য বা মিথ্যা হলো তার ব্যাখ্যা (ঐচ্ছিক)
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    FOREIGN KEY (question_id) REFERENCES questions(question_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+--9. Broad Questions
+
+CREATE TABLE descriptive_answers (
+    answer_id INT PRIMARY KEY AUTO_INCREMENT,
+    question_id INT NOT NULL UNIQUE, -- One-to-One রিলেশন
+    model_answer TEXT NOT NULL, -- আদর্শ উত্তর যা শিক্ষক বা সিস্টেমে দেখাবে
+    keywords_required TEXT, -- অটো-গ্রেডিং বা খাতা দেখার সুবিধার জন্য কমা দিয়ে আলাদা করা মূল শব্দসমূহ
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    FOREIGN KEY (question_id) REFERENCES questions(question_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);

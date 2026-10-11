@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="bn" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>কোশ্চেন ব্যাংক - প্রফেশনাল হোমপেজ</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts for better Bengali Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind_Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Hind Siliguri', sans-serif; }
+        /* Custom subtle scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-blue-500 selection:text-white">
+
+    <!-- ১. নেভিগেশন মেনু বার -->
+    <nav class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-slate-200/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <!-- লোগো -->
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-2xl font-black text-blue-600 tracking-tight flex items-center gap-2">
+                        <div class="w-9 h-9 bg-blue-600 rounded-xl flex items-center justify-center shadow-md shadow-blue-500/20">
+                            <i class="fa-solid fa-graduation-cap text-white text-sm"></i>
+                        </div>
+                        <span>Job<span class="text-emerald-500">QBank</span></span>
+                    </span>
+                </div>
+                
+                <!-- ডেক্সটপ মেনু (Order Fixed: Left to Right) -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-blue-600 font-bold text-sm border-b-2 border-blue-600 pb-1">হোম</a>
+                    <a href="#subjects" class="text-slate-600 hover:text-blue-600 font-semibold text-sm transition-colors">বিষয়সমূহ</a>
+                    <a href="#exams" class="text-slate-600 hover:text-blue-600 font-semibold text-sm transition-colors">পরীক্ষাসমূহ</a>
+                    <a href="#" class="text-slate-600 hover:text-blue-600 font-semibold text-sm transition-colors flex items-center gap-1.5">
+                        <span class="flex h-2 w-2 relative">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-rose-500"></span>
+                        </span>
+                        লাইভ এক্সam
+                    </a>
+                </div>
+
+                <!-- বাটন ও মোবাইল মেনু টগল -->
+                <div class="flex items-center gap-4">
+                    <button class="hidden sm:inline-flex bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-5 py-2.5 rounded-xl font-semibold text-sm transition-all shadow-md hover:shadow-lg shadow-blue-500/10 hover:-translate-y-0.5 transform">
+                        লগইন / সাইনআপ
+                    </button>
+                    <button id="mobile-menu-btn" class="md:hidden text-slate-600 hover:text-slate-900 focus:outline-none p-2 rounded-lg hover:bg-slate-100">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- মোবাইল ড্রপডাউন মেনু -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-4 space-y-2">
+            <a href="#" class="block px-3 py-2 rounded-xl text-base font-medium text-blue-600 bg-blue-50">হোম</a>
+            <a href="#subjects" class="block px-3 py-2 rounded-xl text-base font-medium text-slate-600 hover:bg-slate-50">বিষয়সমূহ</a>
+            <a href="#exams" class="block px-3 py-2 rounded-xl text-base font-medium text-slate-600 hover:bg-slate-50">পরীক্ষাসমূহ</a>
+            <a href="#" class="block px-3 py-2 rounded-xl text-base font-medium text-slate-600 hover:bg-slate-50">লাইভ এক্সাম</a>
+            <button class="w-full text-center bg-blue-600 text-white px-4 py-2.5 rounded-xl font-semibold text-sm">লগইন / সাইনআপ</button>
+        </div>
+    </nav>
+
+    <!-- ২. প্রফেশনাল ব্যানার (Hero Section) -->
+    <header class="bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950 text-white py-24 md:py-32 px-4 text-center relative overflow-hidden">
+        <!-- আধুনিক ব্যাকগ্রাউন্ড গ্লো ইফেক্টস -->
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-emerald-600/10 rounded-full blur-3xl"></div>
+        <div class="absolute inset-0 opacity-5 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:32px_32px]"></div>
+        
+        <div class="max-w-4xl mx-auto relative z-10">
+            <span class="inline-flex items-center gap-1.5 bg-blue-500/10 text-blue-400 border border-blue-500/20 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mb-6 backdrop-blur-sm">
+                <i class="fa-solid fa-bolt text-[10px]"></i> AI-Powered স্মার্ট লার্নিং প্ল্যাটফর্ম
+            </span>
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-[1.25] md:leading-tight tracking-tight bg-gradient-to-r from-white via-slate-100 to-slate-400 bg-clip-text text-transparent">
+                আপনার কাঙ্খিত চাকরি প্রস্তুতির <br><span class="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">একমাত্র নির্ভুল গাইডলাইন</span>
+            </h1>
+            <p class="text-base md:text-lg text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+                অধ্যায়ভিত্তিক এমসিকিউ, নিখুঁত ব্যাখ্যা এবং বাস্তবসম্মত রিয়েল-টাইম এক্সাম মোডের মাধ্যমে নিজের অবস্থান যাচাই করুন এবং এগিয়ে থাকুন।
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#subjects" class="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-4 rounded-xl shadow-lg shadow-blue-600/20 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                    विषয়ভিত্তিক প্রস্তুতি <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+                <a href="#exams" class="w-full sm:w-auto bg-slate-900/60 hover:bg-slate-900 text-slate-200 font-bold px-8 py-4 rounded-xl border border-slate-800 transition-all backdrop-blur-sm hover:border-slate-700 flex items-center justify-center gap-2">
+                    পরীক্ষা ভিত্তিক সল্যুশন
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ট্রাস্ট ও লাইভ স্ট্যাটস সেকশন (New Highlight) -->
+    <section class="max-w-5xl mx-auto px-4 -mt-10 relative z-20">
+        <div class="bg-white rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-100 p-6 md:p-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div>
+                <p class="text-2xl md:text-3xl font-black text-blue-600">৫০,০০০+</p>
+                <p class="text-xs text-slate-500 font-medium mt-1">সক্রিয় পরীক্ষার্থী</p>
+            </div>
+            <div class="border-l border-slate-100">
+                <p class="text-2xl md:text-3xl font-black text-emerald-500">২০,০০০+</p>
+                <p class="text-xs text-slate-500 font-medium mt-1">ব্যাখ্যাসহ প্রশ্ন</p>
+            </div>
+            <div class="border-l border-slate-100">
+                <p class="text-2xl md:text-3xl font-black text-amber-500">৫০০+</p>
+                <p class="text-xs text-slate-500 font-medium mt-1">মডেল টেস্ট</p>
+            </div>
+            <div class="border-l border-slate-100">
+                <p class="text-2xl md:text-3xl font-black text-purple-500">৯৮%</p>
+                <p class="text-xs text-slate-500 font-medium mt-1">কমন উপযোগিতা</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ৩. ডিভিশন ১: জব রিলেটেড বিষয়সমূহ (Subject-wise Division) -->
+    <main id="subjects" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
+        <div class="flex flex-col items-center text-center mb-16">
+            <span class="text-blue-600 font-bold text-xs uppercase tracking-widest bg-blue-50 px-4 py-1.5 rounded-full mb-3">Subject Categories</span>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">বিষয়ভিত্তিক সিলেবাস ও প্রশ্নব্যাংক</h2>
+            <div class="h-1 w-12 bg-blue-600 rounded-full mt-4 mb-3"></div>
+            <p class="text-sm md:text-base text-slate-500 max-w-md">আপনার দুর্বলতার জায়গাগুলো চিহ্নিত করে অধ্যায়ভিত্তিক নিখুঁত চর্চা করুন</p>
+        </div>
+
+        <!-- প্রিমিয়াম সাবজেক্ট গ্রিড -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <!-- বিষয় ১: বাংলা -->
+            <a href="subject-details.html" target="_blank" class="group bg-white p-6 rounded-2xl border border-slate-200/60 hover:border-blue-500 shadow-sm hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300 flex flex-col justify-between hover:-translate-y-1.5 transform">
+                <div>
+                    <div class="w-12 h-12 bg-rose-50 text-rose-600 rounded-xl flex items-center justify-center text-xl font-bold mb-5 group-hover:scale-110 transition-transform duration-300 shadow-sm">অ</div>
+                    <h3 class="text-lg font-bold text-slate-800 group-hover:text-blue-600 transition-colors duration-200 leading-snug">বাংলা ভাষা ও সাহিত্য</h3>
+                    <p class="text-xs text-slate-400 mt-2 leading-relaxed">ব্যাকরণ, প্রাচীন, মধ্য ও আধুনিক যুগের সম্পূর্ণ অধ্যায়ভিত্তিক আলোচনা।</p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                    <span class="bg-rose-50 text-rose-700 text-[11px] font-bold px-2.5 py-1 rounded-md">২৫টি অধ্যায়</span>
+                    <span class="w-7 h-7 rounded-full bg-slate-50 group-hover:bg-blue-50 flex items-center justify-center text-slate-400 group-hover:text-blue-600 transition-colors">
+                        <i class="fa-solid fa-arrow-right text-xs transform group-hover:translate-x-0.5 transition-transform"></i>
+                    </span>
+                </div>
+            </a>
+
+            <!-- বিষয় ২: ইংরেজি -->
+            <a href="subject-details.html" target="_blank" class="group bg-white p-6 rounded-2xl border border-slate-200/60 hover:border-blue-500 shadow-sm hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300 flex flex-col justify-between hover:-translate-y-1.5 transform">
+                <div>
+                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center text-xl font-bold mb-5 group-hover:scale-110 transition-transform duration-300 shadow-sm">A</div>
+                    <h3 class="text-lg font-bold text-slate-800 group-hover:text-blue-600 transition-colors duration-200 leading-snug">English Language</h3>
+                    <p class="text-xs text-slate-400 mt-2 leading-relaxed">Grammar, Literature, Parts of Speech and Crucial Vocabulary.</p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                    <span class="bg-blue-50 text-blue-700 text-[11px] font-bold px-2.5 py-1 rounded-md">৩০টি অধ্যায়</span>
+                    <span class="w-7 h-7 rounded-full bg-slate-50 group-hover:bg-blue-50 flex items-center justify-center text-slate-400 group-hover:text-blue-600 transition-colors">
+                        <i class="fa-solid fa-arrow-right text-xs transform group-hover:translate-x-0.5 transition-transform"></i>
+                    </span>
+                </div>
+            </a>
+
+            <!-- বিষয় ৩: গণিত -->
+            <a href="subject-details.html" target="_blank" class="group bg-white p-6 rounded-2xl border border-slate-200/60 hover:border-blue-500 shadow-sm hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300 flex flex-col justify-between hover:-translate-y-1.5 transform">
+                <div>
+                    <div class="w-12 h-12 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center text-xl font-bold mb-5 group-hover:scale-110 transition-transform duration-300 shadow-sm">∑</div>
+                    <h3 class="text-lg font-bold text-slate-800 group-hover:text-blue-600 transition-colors duration-200 leading-snug">গাণিতিক যুক্তি ও দক্ষতা</h3>
+                    <p class="text-xs text-slate-400 mt-2 leading-relaxed">পাটিগণিত, বীজগণিত, জ্যামিতি ও মানসিক দক্ষতার শর্টকাট ট্রিকস।</p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                    <span class="bg-amber-50 text-amber-700 text-[11px] font-bold px-2.5 py-1 rounded-md">২০টি অধ্যায়</span>
+                    <span class="w-7 h-7 rounded-full bg-slate-50 group-hover:bg-blue-50 flex items-center justify-center text-slate-400 group-hover:text-blue-600 transition-colors">
+                        <i class="fa-solid fa-arrow-right text-xs transform group-hover:translate-x-0.5 transition-transform"></i>
+                    </span>
+                </div>
+            </a>
+
+            <!-- বিষয় ৪: সাধারণ জ্ঞান -->
+            <a href="subject-details.html" target="_blank" class="group bg-white p-6 rounded-2xl border border-slate-200/60 hover:border-blue-500 shadow-sm hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300 flex flex-col justify-between hover:-translate-y-1.5 transform">
+                <div>
+                    <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-lg mb-5 group-hover:scale-110 transition-transform duration-300 shadow-sm"><i class="fa-solid fa-earth-asia"></i></div>
+                    <h3 class="text-lg font-bold text-slate-800 group-hover:text-blue-600 transition-colors duration-200 leading-snug">সাধারণ জ্ঞান</h3>
+                    <p class="text-xs text-slate-400 mt-2 leading-relaxed">বাংলাদেশ ও আন্তর্জাতিক বিষয়াবলী এবং রিয়েল-টাইম ডেটা আপডেট।</p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                    <span class="bg-emerald-50 text-emerald-700 text-[11px] font-bold px-2.5 py-1 rounded-md">৩৫টি অধ্যায়</span>
+                    <span class="w-7 h-7 rounded-full bg-slate-50 group-hover:bg-blue-50 flex items-center justify-center text-slate-400 group-hover:text-blue-600 transition-colors">
+                        <i class="fa-solid fa-arrow-right text-xs transform group-hover:translate-x-0.5 transition-transform"></i>
+                    </span>
+                </div>
+            </a>
+
+        </div>
+    </main>
+
+    <!-- ৪. নতুন ডিভিশন: বিভিন্ন পরীক্ষার প্রশ্নব্যাংক (Exam-wise Division) -->
+    <section id="exams" class="bg-slate-100 border-t border-slate-200/60 py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="flex flex-col items-center text-center mb-16">
+                <span class="text-emerald-600 font-bold text-xs uppercase tracking-widest bg-emerald-50 px-4 py-1.5 rounded-full mb-3">Exam Solutions</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">নির্দিষ্ট পরীক্ষা ভিত্তিক প্রশ্নব্যাংক</h2>
+                <div class="h-1 w-12 bg-emerald-500 rounded-full mt-4 mb-3"></div>
+                <p class="text-sm text-slate-500 max-w-md">বিগত বছরের আসল প্রশ্ন সমাধান করে পরীক্ষার নির্ভরযোগ্য ধারণা নিন</p>
+            </div>
+
+            <!-- প্রফেশনাল এক্সাম গ্রিড লেআউট -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- পরীক্ষা ১: বিসিএস -->
+                <a href="subject-details.html" target="_blank" class="group bg-white p-6 rounded-2xl border border-slate-200/50 shadow-sm hover:shadow-xl hover:shadow-emerald-500/5 hover:border-emerald-500 transition-all duration-300 flex flex-col justify-between relative overflow-hidden hover:-translate-y-1.5 transform">
+                    <div class="absolute top-0 right-0">
+                        <span class="bg-gradient-to-r from-amber-500 to-orange-500 text-white text-[9px] font-bold tracking-wider px-2.5 py-1 rounded-bl-xl uppercase">জনপ্রিয়</span>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 shrink-0 bg-gradient-to-br from-amber-500 to-orange-600 text-white rounded-xl flex items-center justify-center shadow-md shadow-orange-500/10 group-hover:scale-105 transition-transform duration-300">
+                            <i class="fa-solid fa-building-shield text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-800 text-base group-hover:text-emerald-600 transition-colors duration-200">বিসিএস প্রিলিমিনারি</h3>
+                            <p class="text-xs text-slate-400 mt-1">১০ম থেকে সর্বশেষ বিসিএস</p>
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+                        <span class="text-slate-500 font-medium flex items-center gap-1.5"><i class="fa-regular fa-file-lines text-slate-400"></i> ৪৫০০+ MCQ</span>
+                        <span class="font-bold text-emerald-600 flex items-center gap-1">শুরু করুন <i class="fa-solid fa-chevron-right text-[9px] transform group-hover:translate-x-0.5 transition-transform"></i></span>
+                    </div>
+                </a>
+
+                <!-- পরীক্ষা ২: ব্যাংক জবস -->
+                <a href="subject-details.html" target="_blank" class="group bg-white p-6 rounded-2xl border border-slate-200/50 shadow-sm hover:shadow-xl hover:shadow-emerald-500/5 hover:border-emerald-500 transition-all duration-300 flex flex-col justify-between relative overflow-hidden hover:-translate-y-1.5 transform">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 shrink-0 bg-gradient-to-br from-blue-500 to-indigo-600 text-white rounded-xl flex items-center justify-center shadow-md shadow-blue-500/10 group-hover:scale-105 transition-transform duration-300">
+                            <i class="fa-solid fa-building-columns text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-800 text-base group-hover:text-emerald-600 transition-colors duration-200">ব্যাংক রিক্রুটমেন্ট</h3>
+                            <p class="text-xs text-slate-400 mt-1">রাষ্ট্রীয় ও বাণিজ্যিক ব্যাংকসমূহ</p>
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+                        <span class="text-slate-500 font-medium flex items-center gap-1.5"><i class="fa-regular fa-file-lines text-slate-400"></i> ৩০০০+ MCQ</span>
+                        <span class="font-bold text-emerald-600 flex items-center gap-1">শুরু করুন <i class="fa-solid fa-chevron-right text-[9px] transform group-hover:translate-x-0.5 transition-transform"></i></span>
+                    </div>
+                </a>
+
+                <!-- পরীক্ষা ৩: প্রাথমিক শিক্ষক নিয়োগ -->
+                <a href="subject-details.html" target="_blank" class="group bg-white p-6 rounded-2xl border border-slate-200/50 shadow-sm hover:shadow-xl hover:shadow-emerald-500/5 hover:border-emerald-500 transition-all duration-300 flex flex-col justify-between relative overflow-hidden hover:-translate-y-1.5 transform">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 shrink-0 bg-gradient-to-br from-emerald-400 to-teal-600 text-white rounded-xl flex items-center justify-center shadow-md shadow-teal-500/10 group-hover:scale-105 transition-transform duration-300">
+                            <i class="fa-solid fa-book-open-reader text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-800 text-base group-hover:text-emerald-600 transition-colors duration-200">প্রাথমিক শিক্ষক নিয়োগ</h3>
+                            <p class="text-xs text-slate-400 mt-1">প্রাইমারী সহকারী শিক্ষক পরীক্ষা</p>
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+                        <span class="text-slate-500 font-medium flex items-center gap-1.5"><i class="fa-regular fa-file-lines text-slate-400"></i> ২৫০০+ MCQ</span>
+                        <span class="font-bold text-emerald-600 flex items-center gap-1">শুরু করুন <i class="fa-solid fa-chevron-right text-[9px] transform group-hover:translate-x-0.5 transition-transform"></i></span>
+                    </div>
+                </a>
+
+                <!-- পরীক্ষা ৪: শিক্ষক নিবন্ধন (NTRCA) -->
+                <a href="subject-details.html" target="_blank" class="group bg-white p-6 rounded-2xl border border-slate-200/50 shadow-sm hover:shadow-xl hover:shadow-emerald-500/5 hover:border-emerald-500 transition-all duration-300 flex flex-col justify-between relative overflow-hidden hover:-translate-y-1.5 transform">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 shrink-0 bg-gradient-to-br from-purple-500 to-pink-600 text-white rounded-xl flex items-center justify-center shadow-md shadow-purple-500/10 group-hover:scale-105 transition-transform duration-300">
+                            <i class="fa-solid fa-school-flag text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-800 text-base group-hover:text-emerald-600 transition-colors duration-200">শিক্ষক নিবন্ধন (NTRCA)</h3>
+                            <p class="text-xs text-slate-400 mt-1">স্কুল ও কলেজ পর্যায়ের নিবন্ধন</p>
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+                        <span class="text-slate-500 font-medium flex items-center gap-1.5"><i class="fa-regular fa-file-lines text-slate-400"></i> ৩৫০০+ MCQ</span>
+                        <span class="font-bold text-emerald-600 flex items-center gap-1">শুরু করুন <i class="fa-solid fa-chevron-right text-[9px] transform group-hover:translate-x-0.5 transition-transform"></i></span>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ৫. আধুনিক ফুটার -->
+    <footer class="bg-slate-950 text-slate-400 pt-16 pb-8 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <!-- ব্র্যান্ড ইনোফো -->
+            <div class="text-center md:text-left">
+                <span class="text-2xl font-black text-white block mb-4 tracking-tight">Job<span class="text-emerald-500">QBank</span></span>
+                <p class="text-sm text-slate-400 max-w-sm leading-relaxed">বাংলাদেশের সবচেয়ে বিশ্বস্ত, প্রফেশনাল এবং আধুনিক কোশ্চেন ব্যাংক ম্যানেজমেন্ট ও লাইভ এক্সাম সিস্টেম।</p>
+            </div>
+            <!-- কুইক লিংকস -->
+            <div class="text-center">
+                <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">প্রয়োজনীয় লিংক</h4>
+                <div class="flex flex-col space-y-2 text-sm">
+                    <a href="#" class="hover:text-white transition-colors">আমাদের সম্পর্কে</a>
+                    <a href="#" class="hover:text-white transition-colors">প্রাইভেসি পলিসি</a>
+                    <a href="#" class="hover:text-white transition-colors">শর্তাবলী</a>
+                </div>
+            </div>
+            <!-- সোশ্যাল ও কন্ট্যাক্ট -->
+            <div class="text-center md:text-right">
+                <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">যুক্ত থাকুন</h4>
+                <div class="flex justify-center md:justify-end space-x-4 mb-4">
+                    <a href="#" class="w-9 h-9 rounded-xl bg-slate-900 hover:bg-blue-600 hover:text-white flex items-center justify-center transition-all"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="w-9 h-9 rounded-xl bg-slate-900 hover:bg-sky-500 hover:text-white flex items-center justify-center transition-all"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="w-9 h-9 rounded-xl bg-slate-900 hover:bg-red-600 hover:text-white flex items-center justify-center transition-all"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+                <p class="text-xs text-slate-500">ইমেইল: support@jobqbank.com</p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-900 pt-8 text-center">
+            <p class="text-xs text-slate-600">© 2026 JobQBank. All rights reserved. Designed for excellence.</p>
+        </div>
+    </footer>
+
+    <!-- মোবাইল মেনু টগল স্ক্রিপ্ট -->
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

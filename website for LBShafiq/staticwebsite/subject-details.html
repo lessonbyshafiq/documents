@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>অধ্যায়ভিত্তিক প্রশ্ন ও পরীক্ষা</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* স্মুথ ড্রপডাউন অ্যানিমেশন */
+        .dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .dropdown-active .dropdown-content {
+            max-height: 500px;
+        }
+        .dropdown-active .chevron-icon {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+
+    <!-- ১. প্রিমিয়াম হেডার ও মোড সুইচার -->
+    <header class="bg-white border-b border-slate-200 py-4 px-6 sticky top-0 z-50 flex flex-col sm:flex-row justify-between items-center gap-4 shadow-sm">
+        <div class="flex items-center gap-3">
+            <a href="index.html" class="text-slate-500 hover:text-blue-600 transition"><i class="fa-solid fa-arrow-left text-lg"></i></a>
+            <div>
+                <h1 class="text-xl font-bold text-slate-900">বাংলা ভাষা ও সাহিত্য</h1>
+                <p class="text-xs text-slate-500">বিসিএস ও ব্যাংক জব প্রিপারেশন</p>
+            </div>
+        </div>
+        
+        <!-- স্ট্যান্ডার্ড মোড সিলেক্টর -->
+        <div class="flex bg-slate-100 p-1.5 rounded-xl border border-slate-200/60 w-full sm:w-auto max-w-xs">
+            <button id="readingModeBtn" onclick="setMode('reading')" class="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-semibold rounded-lg transition-all duration-200">
+                <i class="fa-solid fa-book-open"></i> রিডিং মোড
+            </button>
+            <button id="examModeBtn" onclick="setMode('exam')" class="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-semibold rounded-lg transition-all duration-200">
+                <i class="fa-solid fa-graduation-cap"></i> এক্সাম মোড
+            </button>
+        </div>
+    </header>
+
+    <!-- ২. মূল লেআউট -->
+    <div class="flex flex-1 flex-col md:flex-row">
+        
+        <!-- বামপাশের ড্রপডাউন মেনু (Sidebar) -->
+        <aside class="w-full md:w-80 bg-white border-r border-slate-200 p-4 space-y-3 shrink-0 md:h-[calc(100vh-73px)] md:sticky md:top-[73px] overflow-y-auto">
+            <h2 class="text-xs font-bold text-slate-400 uppercase tracking-wider px-2 mb-4">অধ্যায় ও টপিকসমূহ</h2>
+            
+            <!-- অধ্যায় ১ (ডিফল্ট ওপেন থাকবে তাই 'dropdown-active' ক্লাস দেওয়া) -->
+            <div class="chapter-accordion dropdown-active">
+                <button onclick="toggleDropdown(this)" class="w-full flex items-center justify-between p-3 rounded-xl font-semibold text-left text-slate-700 hover:bg-slate-50 transition">
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-folder text-blue-500"></i> ১. ভাষা ও ব্যাকরণ</span>
+                    <i class="fa-solid fa-chevron-down text-xs text-slate-400 chevron-icon transition-transform duration-200"></i>
+                </button>
+                <div class="dropdown-content pl-6 space-y-1 mt-1">
+                    <a href="#" class="block px-3 py-2 rounded-lg text-sm font-medium bg-blue-50 text-blue-700 border-l-2 border-blue-600">● ভাষা আন্দোলন ও সাহিত্য</a>
+                    <a href="#" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition">● বাংলা ভাষার উদ্ভব ও বিকাশ</a>
+                    <a href="#" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition">● ধ্বনি ও বর্ণ</a>
+                </div>
+            </div>
+
+            <!-- অধ্যায় ২ -->
+            <div class="chapter-accordion">
+                <button onclick="toggleDropdown(this)" class="w-full flex items-center justify-between p-3 rounded-xl font-semibold text-left text-slate-700 hover:bg-slate-50 transition">
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-folder text-amber-500"></i> ২. প্রাচীন ও মধ্যযুগ</span>
+                    <i class="fa-solid fa-chevron-down text-xs text-slate-400 chevron-icon transition-transform duration-200"></i>
+                </button>
+                <div class="dropdown-content pl-6 space-y-1 mt-1">
+                    <a href="#" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition">● চর্যাপদ</a>
+                    <a href="#" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition">● মঙ্গলকাব্য</a>
+                    <a href="#" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition">● শ্রীকৃষ্ণকীর্তন কাব্য</a>
+                </div>
+            </div>
+
+            <!-- অধ্যায় ৩ -->
+            <div class="chapter-accordion">
+                <button onclick="toggleDropdown(this)" class="w-full flex items-center justify-between p-3 rounded-xl font-semibold text-left text-slate-700 hover:bg-slate-50 transition">
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-folder text-emerald-500"></i> ৩. আধুনিক যুগ</span>
+                    <i class="fa-solid fa-chevron-down text-xs text-slate-400 chevron-icon transition-transform duration-200"></i>
+                </button>
+                <div class="dropdown-content pl-6 space-y-1 mt-1">
+                    <a href="#" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition">● ফোর্ট উইলিয়াম কলেজ</a>
+                    <a href="#" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition">● রবীন্দ্রনাথ ঠাকুর</a>
+                    <a href="#" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition">● কাজী নজরুল ইসলাম</a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ডানপাশের এমসিকিউ সেকশন -->
+        <main class="flex-1 p-4 sm:p-6 lg:p-8 max-w-4xl mx-auto w-full overflow-y-auto">
+            
+            <!-- বর্তমান টপিক ইনফো কার্ড -->
+            <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div>
+                    <span class="bg-blue-50 text-blue-700 text-xs font-bold px-2.5 py-1 rounded-md uppercase">চলতি টপিক</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1">১.১ ভাষা আন্দোলন ও বাংলা সাহিত্য</h2>
+                </div>
+                <!-- এক্সাম মোডের জন্য প্রফেশনাল স্কোর ট্র্যাকার -->
+                <div id="scoreBoard" class="hidden items-center gap-3 bg-slate-50 px-4 py-2 rounded-xl border border-slate-200">
+                    <span class="text-xs font-bold text-slate-500 uppercase">লাইভ স্কোর:</span>
+                    <span class="text-sm font-bold text-slate-800"><span id="correctCount" class="text-emerald-600">0</span> / <span id="totalAttempted">0</span></span>
+                </div>
+            </div>
+
+            <!-- প্রশ্নের কন্টেইনার -->
+            <div class="space-y-6">
+                
+                <!-- প্রশ্ন ১ -->
+                <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-slate-200/70 question-card relative" data-answered="false">
+                    <div class="flex justify-between items-start gap-4 mb-4">
+                        <h3 class="text-lg font-bold text-slate-800 leading-snug">
+                            <span class="text-blue-600 mr-1 font-mono">১.</span> 'মোদের গরব মোদের আশা, আমরি বাংলা ভাষা'— রচয়িতা কে?
+                        </h3>
+                    </div>
+                    
+                    <!-- অপশনসমূহ -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <button onclick="checkAnswer(this, false)" class="option-btn w-full text-left p-3.5 rounded-xl border border-slate-200 hover:bg-slate-50 hover:border-slate-300 font-medium transition-all flex items-center justify-between group">
+                            <span>ক) রামনিধি গুপ্ত</span>
+                            <i class="status-icon fa-regular fa-circle text-slate-300 group-hover:text-slate-400"></i>
+                        </button>
+                        <button onclick="checkAnswer(this, true)" class="option-btn w-full text-left p-3.5 rounded-xl border border-slate-200 hover:bg-slate-50 hover:border-slate-300 font-medium transition-all flex items-center justify-between group correct-ans">
+                            <span>খ) অতুলপ্রসাদ সেন</span>
+                            <i class="status-icon fa-regular fa-circle text-slate-300 group-hover:text-slate-400"></i>
+                        </button>
+                        <button onclick="checkAnswer(this, false)" class="option-btn w-full text-left p-3.5 rounded-xl border border-slate-200 hover:bg-slate-50 hover:border-slate-300 font-medium transition-all flex items-center justify-between group">
+                            <span>গ) সত্যেন্দ্রনাথ দত্ত</span>
+                            <i class="status-icon fa-regular fa-circle text-slate-300 group-hover:text-slate-400"></i>
+                        </button>
+                        <button onclick="checkAnswer(this, false)" class="option-btn w-full text-left p-3.5 rounded-xl border border-slate-200 hover:bg-slate-50 hover:border-slate-300 font-medium transition-all flex items-center justify-between group">
+                            <span>ঘ) প্রমথ চৌধুরী</span>
+                            <i class="status-icon fa-regular fa-circle text-slate-300 group-hover:text-slate-400"></i>
+                        </button>
+                    </div>
+
+                    <!-- মডার্ন ব্যাখ্যা বক্স -->
+                    <div class="explanation mt-4 p-4 bg-emerald-50/60 text-emerald-900 text-sm rounded-xl border border-emerald-100 hidden">
+                        <div class="flex items-center gap-2 font-bold text-emerald-700 mb-1">
+                            <i class="fa-solid fa-circle-info"></i> সঠিক উত্তর ও ব্যাখ্যা:
+                        </div>
+                        এই বিখ্যাত দেশাত্মবোধক গানটির রচয়িতা অতুলপ্রসাদ সেন। তিনি একজন বিখ্যাত বাঙালি গীতিকার ও সুরকার ছিলেন।
+                    </div>
+                </div>
+
+                <!-- প্রশ্ন ২ -->
+                <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-slate-200/70 question-card relative" data-answered="false">
+                    <div class="flex justify-between items-start gap-4 mb-4">
+                        <h3 class="text-lg font-bold text-slate-800 leading-snug">
+                            <span class="text-blue-600 mr-1 font-mono">২.</span> প্রথম শহীদ মিনারটি কত তারিখে নির্মিত হয়েছিল?
+                        </h3>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <button onclick="checkAnswer(this, true)" class="option-btn w-full text-left p-3.5 rounded-xl border border-slate-200 hover:bg-slate-50 hover:border-slate-300 font-medium transition-all flex items-center justify-between group correct-ans">
+                            <span>ক) ২৩ ফেব্রুয়ারি ১৯৫২</span>
+                            <i class="status-icon fa-regular fa-circle text-slate-300 group-hover:text-slate-400"></i>
+                        </button>
+                        <button onclick="checkAnswer(this, false)" class="option-btn w-full text-left p-3.5 rounded-xl border border-slate-200 hover:bg-slate-50 hover:border-slate-300 font-medium transition-all flex items-center justify-between group">
+                            <span>খ) ২১ ফেব্রুয়ারি ১৯৫২</span>
+                            <i class="status-icon fa-regular fa-circle text-slate-300 group-hover:text-slate-400"></i>
+                        </button>
+                        <button onclick="checkAnswer(this, false)" class="option-btn w-full text-left p-3.5 rounded-xl border border-slate-200 hover:bg-slate-50 hover:border-slate-300 font-medium transition-all flex items-center justify-between group">
+                            <span>গ) ২৬ ফেব্রুয়ারি ১৯৫২</span>
+                            <i class="status-icon fa-regular fa-circle text-slate-300 group-hover:text-slate-400"></i>
+                        </button>
+                        <button onclick="checkAnswer(this, false)" class="option-btn w-full text-left p-3.5 rounded-xl border border-slate-200 hover:bg-slate-50 hover:border-slate-300 font-medium transition-all flex items-center justify-between group">
+                            <span>ঘ) ২০ ফেব্রুয়ারি ১৯৫২</span>
+                            <i class="status-icon fa-regular fa-circle text-slate-300 group-hover:text-slate-400"></i>
+                        </button>
+                    </div>
+
+                    <div class="explanation mt-4 p-4 bg-emerald-50/60 text-emerald-900 text-sm rounded-xl border border-emerald-100 hidden">
+                        <div class="flex items-center gap-2 font-bold text-emerald-700 mb-1">
+                            <i class="fa-solid fa-circle-info"></i> সঠিক উত্তর ও ব্যাখ্যা:
+                        </div>
+                        ১৯৫২ সালের ২৩ ফেব্রুয়ারি বিকেলে ঢাকা মেডিকেল কলেজের ছাত্ররা প্রথম শহীদ মিনার তৈরি করে, যা ২৪ ফেব্রুয়ারি শফিউরের পিতা উদ্বোধন করেন।
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- ৩. ইন্টারঅ্যাক্টিভ ও ডাইনামিক জাভাস্ক্রিপ্ট -->
+    <script>
+        let currentMode = 'reading';
+        let correctAnswersCount = 0;
+        let totalAttemptedCount = 0;
+
+        // ১. ড্রপডাউন অ্যাকোর্ডিয়ন মেনু কন্ট্রোল
+        function toggleDropdown(button) {
+            const currentAccordion = button.parentElement;
+            const isActive = currentAccordion.classList.contains('dropdown-active');
+            
+            // অন্য সব ওপেন থাকা ড্রপডাউন বন্ধ করতে চাইলে নিচের কমেন্ট সরাবেন:
+            /* 
+            document.querySelectorAll('.chapter-accordion').forEach(acc => {
+                acc.classList.remove('dropdown-active');
+                acc.querySelector('.dropdown-content').style.maxHeight = null;
+            }); 
+            */
+
+            if (!isActive) {
+                currentAccordion.classList.add('dropdown-active');
+                const content = currentAccordion.querySelector('.dropdown-content');
+                content.style.maxHeight = content.scrollHeight + "px";
+            } else {
+                currentAccordion.classList.remove('dropdown-active');
+                currentAccordion.querySelector('.dropdown-content').style.maxHeight = null;
+            }
+        }
+
+        // পেজ লোড হওয়ার সময় একটি ডিফল্ট হাইট সেট করা অ্যাকোর্ডিয়নের জন্য
+        document.addEventListener("DOMContentLoaded", function() {
+            const activeContent = document.querySelector('.dropdown-active .dropdown-content');
+            if (activeContent) {
+                activeContent.style.maxHeight = activeContent.scrollHeight + "px";
+            }
+            setMode('reading'); // প্রথমবার রিডিং মোড লোড হবে
+        });
+
+
+        // ২. রিডিং ও এক্সাম মোড আর্কিটেকচার কন্ট্রোল
+        function setMode(mode) {
+            currentMode = mode;
+            const readingBtn = document.getElementById('readingModeBtn');
+            const examBtn = document.getElementById('examModeBtn');
+            const scoreBoard = document.getElementById('scoreBoard');
+            
+            // স্কোর রিসেট
+            correctAnswersCount = 0;
+            totalAttemptedCount = 0;
+            document.getElementById('correctCount').innerText = '0';
+            document.getElementById('totalAttempted').innerText = '0';
+
+            // সমস্ত কার্ড রিসেট করা
+            document.querySelectorAll('.question-card').forEach(card => {
+                card.setAttribute('data-answered', 'false');
+                const explanations = card.querySelectorAll('.explanation');
+                const options = card.querySelectorAll('.option-btn');
+
+                options.forEach(opt => {
+                    opt.disabled = false;
+                    // নরমাল বর্ডার ক্লাসে রিসেট
+                    opt.className = "option-btn w-full text-left p-3.5 rounded-xl border border-slate-200 hover:bg-slate-50 hover:border-slate-300 font-medium transition-all flex items-center justify-between group";
+                    // আইকন রিসেট
+                    opt.querySelector('.status-icon').className = "status-icon fa-regular fa-circle text-slate-300 group-hover:text-slate-400";
+                });
+
+                if (mode === 'reading') {
+                    explanations.forEach(exp => exp.classList.remove('hidden'));
+                    // রিডিং মোডে সঠিক উত্তর আগে থেকেই হাইলাইট থাকবে
+                    card.querySelectorAll('.correct-ans').forEach(ans => {
+                        ans.classList.add('bg-emerald-50', 'border-emerald-500', 'text-emerald-700');
+                        ans.querySelector('.status-icon').className = "status-icon fa-solid fa-circle-check text-emerald-600";
+                    });
+                } else {
+                    explanations.forEach(exp => exp.classList.add('hidden'));
+                }
+            });
+
+            // বাটন হাইলাইট সোয়াপিং
+            if (mode === 'reading') {
+                readingBtn.className = "flex-1 flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-semibold rounded-lg bg-blue-600 text-white shadow-md shadow-blue-200/50 transition-all duration-200";
+                examBtn.className = "flex-1 flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition-all duration-200";
+                scoreBoard.classList.replace('flex', 'hidden');
+            } else {
+                examBtn.className = "flex-1 flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-semibold rounded-lg bg-blue-600 text-white shadow-md shadow-blue-200/50 transition-all duration-200";
+                readingBtn.className = "flex-1 flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition-all duration-200";
+                scoreBoard.classList.replace('hidden', 'flex');
+            }
+        }
+
+        // ৩. এক্সাম মোডে ক্লিক হ্যান্ডেলিং
+        function checkAnswer(selectedButton, isCorrect) {
+            if (currentMode !== 'exam') return; // রিডিং মোডে ক্লিক কাজ করবে না
+
+            const parentCard = selectedButton.closest('.question-card');
+            
+            // যদি এই প্রশ্নের উত্তর ইতিমধ্যে দেওয়া হয়ে থাকে তবে আর কাজ করবে না
+            if (parentCard.getAttribute('data-answered') === 'true') return;
+            parentCard.setAttribute('data-answered', 'true');
+
+            const siblingOptions = parentCard.querySelectorAll('.option-btn');
+            const explanation = parentCard.querySelector('.explanation');
+
+            // সমস্ত অপশন লক করা
+            siblingOptions.forEach(opt => opt.disabled = true);
+
+            // লাইভ স্কোর আপডেট লজিক
+            totalAttemptedCount++;
+            document.getElementById('totalAttempted').innerText = totalAttemptedCount;
+
+            if (isCorrect) {
+                correctAnswersCount++;
+                document.getElementById('correctCount').innerText = correctAnswersCount;
+                
+                // বাটন গ্রিন করা
+                selectedButton.className = "option-btn w-full text-left p-3.5 rounded-xl border border-emerald-500 bg-emerald-50 text-emerald-800 font-semibold transition-all flex items-center justify-between";
+                selectedButton.querySelector('.status-icon').className = "status-icon fa-solid fa-circle-check text-emerald-600";
+            } else {
+                // বাটন রেড করা
+                selectedButton.className = "option-btn w-full text-left p-3.5 rounded-xl border border-red-500 bg-red-50 text-red-800 font-semibold transition-all flex items-center justify-between";
+                selectedButton.querySelector('.status-icon').className = "status-icon fa-solid fa-circle-xmark text-red-600";
+                
+                // সঠিক উত্তরটি একসাথে গ্রিন করে প্রম্পট করা
+                const correctAns = parentCard.querySelector('.correct-ans');
+                correctAns.className = "option-btn w-full text-left p-3.5 rounded-xl border border-emerald-500 bg-emerald-50 text-emerald-800 font-medium transition-all flex items-center justify-between";
+                correctAns.querySelector('.status-icon').className = "status-icon fa-solid fa-circle-check text-emerald-600";
+            }
+            
+            // অ্যানিমেশন সহ ব্যাখ্যা বক্স শো করা
+            explanation.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
